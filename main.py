@@ -58,6 +58,28 @@ app = FastAPI(title="FastAPI Render Tutorial")
 
 
 
+
+
+
+
+
+
+# ✅ ADD HERE ↓↓↓
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+@app.get("/app")
+def frontend():
+    return FileResponse("static/index.html")
+# ✅ END ADD
+
+
+
+
+
+
 # Create tables on startup
 @app.on_event("startup")
 def startup():

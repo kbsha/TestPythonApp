@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FastAPI Frontend</title>
+</head>
+<body>
+
+<h2>Test Frontend → Render Backend</h2>
+
+<button onclick="loadData()">Get Items</button>
+
+<pre id="output"></pre>
+
+<script>
+const API_URL = "https://fastapi-tutorial-05lp.onrender.com";
+
+async function loadData() {
+  const output = document.getElementById("output");
+  output.textContent = "Loading...";
+
+  try {
+    const res = await fetch(`${API_URL}/api/items`);
+    const data = await res.json();
+    output.textContent = JSON.stringify(data, null, 2);
+  } catch (err) {
+    output.textContent = "Error: " + err.message;
+  }
+}
+</script>
+
+</body>
+</html>
