@@ -8,6 +8,8 @@ import os
 import re
 import uuid
 
+
+
 # Optional: Read environment variable (defaults to "development")
 ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
 
@@ -51,6 +53,9 @@ class ItemResponse(BaseModel):
 
 
 app = FastAPI(title="FastAPI Render Tutorial")
+
+
+
 
 
 # Create tables on startup
@@ -141,3 +146,17 @@ def delete_item(item_id: str):
     db.delete(item)
     db.commit()
     return {"message": f"Item {item_id} deleted successfully"}
+
+
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI(title="FastAPI Render Tutorial")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # for testing only
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
