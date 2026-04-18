@@ -149,14 +149,3 @@ def delete_item(item_id: str):
 
 
 
-from fastapi.middleware.cors import CORSMiddleware
-
-app = FastAPI(title="FastAPI Render Tutorial")
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # for testing only
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
